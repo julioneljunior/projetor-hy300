@@ -25,6 +25,8 @@ public class AppsActivity extends Activity {
         LinearLayout root = Ui.col(this);
         root.setBackground(Ui.wallpaper(this));
         root.setPadding(Ui.dp(64), Ui.dp(36), Ui.dp(64), 0);
+        root.setClipChildren(false);
+        root.setClipToPadding(false);
 
         TextView title = Ui.text(this, "Todos os apps", 34, Ui.w700, Ui.TEXT);
         title.setLetterSpacing(-0.02f);
@@ -38,14 +40,14 @@ public class AppsActivity extends Activity {
         ScrollView scroll = new ScrollView(this);
         scroll.setClipChildren(false);
         scroll.setClipToPadding(false);
-        scroll.setPadding(0, Ui.dp(10), 0, Ui.dp(40));
+        scroll.setPadding(Ui.dp(8), Ui.dp(10), Ui.dp(8), Ui.dp(40));
         GridLayout grid = new GridLayout(this);
         grid.setColumnCount(COLS);
         grid.setClipChildren(false);
         scroll.addView(grid);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1f));
 
-        int cell = (getResources().getDisplayMetrics().widthPixels - Ui.dp(128) - Ui.dp(16) * (COLS - 1)) / COLS;
+        int cell = (getResources().getDisplayMetrics().widthPixels - Ui.dp(144) - Ui.dp(16) * (COLS - 1)) / COLS;
         List<Apps.Entry> list = Apps.all(this, true);
         for (int i = 0; i < list.size(); i++) {
             GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
