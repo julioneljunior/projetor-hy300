@@ -234,6 +234,8 @@ final class Ui {
     static void appMenu(Context c, View anchor, String title, String[] labels, Runnable[] actions) {
         LinearLayout panel = col(c);
         panel.setPadding(dp(12), dp(12), dp(12), dp(12));
+        panel.setClipChildren(false);
+        panel.setClipToPadding(false);
         GradientDrawable background = round(CARD, 18);
         background.setStroke(dp(1), GLASS_EDGE);
         panel.setBackground(background);

@@ -753,8 +753,9 @@ public class HomeActivity extends Activity {
         LinearLayout d = Ui.row(this);
         d.setBackground(Ui.glass(26));
         d.setElevation(Ui.dp(6));
-        d.setPadding(Ui.dp(10), 0, Ui.dp(10), 0);
+        d.setPadding(Ui.dp(5.3f), 0, Ui.dp(5.3f), 0);
         d.setClipChildren(false);
+        d.setClipToPadding(false);
 
         // Detecta hardware e carrega intents compatíveis
         Hardware.Chipset chipset = Hardware.detectChipset();
@@ -823,13 +824,13 @@ public class HomeActivity extends Activity {
         it.setOnFocusChangeListener((v, has) -> {
             bg.setColor(has ? Ui.FOCUS_BG : 0x00000000);
             t.setTextColor(has ? Ui.TEXT : Ui.MUTED);
-            v.animate().scaleX(has ? 1.14f : 1f).scaleY(has ? 1.14f : 1f).translationY(has ? -Ui.dp(4) : 0)
+            v.animate().scaleX(has ? 1.14f : 1f).scaleY(has ? 1.14f : 1f)
                     .setDuration(160).start();
             v.setElevation(has ? Ui.dp(8) : 0);
             if (has) App.inst.controller.onScreen(getPackageName(), label);
         });
         if (intent != null) it.setOnClickListener(v -> open(intent));
-        dock.addView(it, new LinearLayout.LayoutParams(Ui.dp(76), Ui.dp(68)));
+        dock.addView(it, new LinearLayout.LayoutParams(Ui.dp(76), Ui.dp(74)));
         return it;
     }
 
